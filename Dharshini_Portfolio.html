@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N. Dharshini — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12141C;
+    --bg-raised: #181B26;
+    --line: #262A3A;
+    --amber: #E8836B;
+    --cyan: #7C93D1;
+    --text: #E9E7E2;
+    --text-dim: #9096A8;
+    --text-faint: #5C6478;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--amber); color:var(--bg);}
+
+  a{color:var(--cyan); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-trace{
+    position:absolute;
+    top:0; left:0; right:0;
+    width:100%;
+    height:auto;
+    opacity:0.9;
+  }
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--cyan);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .kicker .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 8px var(--amber);
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:clamp(38px, 8vw, 58px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    color:var(--text);
+  }
+  .role-line{
+    margin-top:18px;
+    font-size:17px;
+    color:var(--text-dim);
+    max-width:56ch;
+  }
+  .contact-row{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    color:var(--text-dim);
+  }
+  .contact-row a{color:var(--text-dim);}
+  .contact-row a:hover{color:var(--cyan);}
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:22px;
+    color:var(--text);
+    margin-bottom:28px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+  }
+  h2::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  /* Objective */
+  .objective p{
+    font-size:16px;
+    color:var(--text-dim);
+    max-width:62ch;
+  }
+
+  /* Education timeline */
+  .edu-item{
+    position:relative;
+    padding-left:28px;
+    margin-bottom:26px;
+  }
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-item::before{
+    content:'';
+    position:absolute;
+    left:0; top:6px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--amber);
+  }
+  .edu-item::after{
+    content:'';
+    position:absolute;
+    left:4px; top:16px;
+    width:1px;
+    height:calc(100% + 10px);
+    background:var(--line);
+  }
+  .edu-item:last-child::after{display:none;}
+  .edu-degree{
+    font-weight:600;
+    font-size:15.5px;
+    color:var(--text);
+  }
+  .edu-school{
+    font-size:14px;
+    color:var(--text-dim);
+    margin-top:2px;
+  }
+  .edu-score{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--cyan);
+    margin-top:4px;
+  }
+
+  /* Internships */
+  .intern-list{list-style:none;}
+  .intern-list li{
+    display:flex;
+    gap:14px;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+    font-size:15px;
+    color:var(--text-dim);
+  }
+  .intern-list li:first-child{border-top:none;}
+  .intern-role{color:var(--text); font-weight:500;}
+  .intern-list li::before{
+    content:'⌁';
+    color:var(--amber);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* Skills */
+  .skill-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .skill-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--text-dim);
+    border:1px solid var(--line);
+    padding:7px 14px;
+    border-radius:2px;
+  }
+
+  /* Projects */
+  .project{
+    border-left:2px solid var(--line);
+    padding:6px 0 6px 20px;
+    margin-bottom:22px;
+    transition:border-color 0.2s;
+  }
+  .project:hover{border-left-color:var(--amber);}
+  .project:last-child{margin-bottom:0;}
+  .project-title{
+    font-weight:600;
+    font-size:15.5px;
+    color:var(--text);
+  }
+  .project-desc{
+    font-size:14px;
+    color:var(--text-dim);
+    margin-top:6px;
+    max-width:58ch;
+  }
+
+  /* Certifications */
+  .cert-list{list-style:none;}
+  .cert-list li{
+    font-size:14.5px;
+    color:var(--text-dim);
+    padding:8px 0;
+    border-top:1px solid var(--line);
+  }
+  .cert-list li:first-child{border-top:none;}
+  .cert-list li::before{
+    content:'▸ ';
+    color:var(--cyan);
+  }
+  .achieve{
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px dashed var(--line);
+  }
+  .achieve-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--text-faint);
+    margin-bottom:10px;
+  }
+  .achieve li{border-top:none; padding:5px 0;}
+
+  /* Strengths + Languages */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .strength-list{list-style:none;}
+  .strength-list li{
+    font-size:14.5px;
+    color:var(--text-dim);
+    padding:6px 0;
+  }
+  .strength-list li::before{content:'— '; color:var(--text-faint);}
+  .lang-list{list-style:none;}
+  .lang-list li{
+    font-size:14.5px;
+    color:var(--text-dim);
+    padding:6px 0;
+  }
+
+  footer{
+    padding:40px 0 60px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--text-faint);
+    text-align:center;
+  }
+
+  @media (max-width:600px){
+    .two-col{grid-template-columns:1fr;}
+    .hero{padding:64px 0 48px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <svg class="hero-trace" viewBox="0 0 760 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,30 L120,30 L140,10 L620,10 L640,30 L760,30" fill="none" stroke="#223038" stroke-width="1"/>
+      <circle cx="140" cy="10" r="3" fill="#E8A33D"/>
+      <circle cx="640" cy="30" r="3" fill="#4FB0C6"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>Electronics &amp; Communication Engineering</div>
+    <h1>N. Dharshini</h1>
+    <p class="role-line">
+      An Electronics and Communication Engineering student seeking an entry-level
+      opportunity in Embedded Systems, IoT, or VLSI. Backed by hands-on project
+      experience and strong technical fundamentals, with a drive to quickly
+      pick up emerging technologies.
+    </p>
+    <div class="contact-row">
+      <span>9361805646</span>
+      <a href="mailto:dharshininarendrababu@gmail.com">dharshininarendrababu@gmail.com</a>
+      <a href="https://www.linkedin.com/in/dharshini-narendrababu-0610113b2" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/dharshininarendrababu-bit" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <!-- EDUCATION -->
+  <section>
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div class="edu-degree">B.E. — Electronics &amp; Communication Engineering</div>
+      <div class="edu-school">Adhiparasakthi Engineering College, Melmaruvathur</div>
+      <div class="edu-score">CGPA 8.65 / 10</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-degree">HSC</div>
+      <div class="edu-school">HSS Govt. Higher Secondary School, Madurantakam</div>
+      <div class="edu-score">79.83%</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-degree">SSLC</div>
+      <div class="edu-school">HSS Govt. Higher Secondary School, Madurantakam</div>
+      <div class="edu-score">Pass</div>
+    </div>
+  </section>
+
+  <!-- INTERNSHIPS -->
+  <section>
+    <h2>Internships</h2>
+    <ul class="intern-list">
+      <li><span class="intern-role">Embedded Systems with AI</span>&nbsp;— NSIC</li>
+      <li><span class="intern-role">Web Development</span>&nbsp;— Askan Technologies Pvt. Ltd</li>
+      <li><span class="intern-role">VLSI</span>&nbsp;— Tech Vedhu</li>
+    </ul>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <h2>Technical skills</h2>
+    <div class="skill-grid">
+      <span class="skill-chip">Embedded Systems</span>
+      <span class="skill-chip">VLSI Fundamentals</span>
+      <span class="skill-chip">Python</span>
+      <span class="skill-chip">MATLAB</span>
+      <span class="skill-chip">Data Science &amp; Analytics</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <h2>Projects</h2>
+    <div class="project">
+      <div class="project-title">IoT-based smart waste segregation bin with automated mobility</div>
+      <div class="project-desc">Sensor-based bin that sorts waste into categories automatically and moves itself for easier collection.</div>
+    </div>
+    <div class="project">
+      <div class="project-title">Finite state machine (FSM) implementation &amp; optimization using Verilog HDL</div>
+      <div class="project-desc">Designed and optimized FSM-based digital logic control circuits using Verilog HDL.</div>
+    </div>
+    <div class="project">
+      <div class="project-title">AI-assisted early detection system for osteoarthritis risk markers in North Eastern Region</div>
+      <div class="project-desc">AI model to flag early osteoarthritis risk markers using regional health data for the North Eastern Region.</div>
+    </div>
+    <div class="project">
+      <div class="project-title">Multilingual cooperative governance &amp; legal assistance chatbot</div>
+      <div class="project-desc">Chatbot that answers cooperative governance and legal assistance queries in multiple languages.</div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section>
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      <li>Getting Started with Artificial Intelligence — IBM SkillsBuild</li>
+      <li>Getting Started with Cybersecurity — IBM SkillsBuild</li>
+      <li>VLSI Course — Tech Vedhu</li>
+      <li>NPTEL — Introduction to Internet of Things and Industry 4.0</li>
+      <li>Data Science and Analytics Certification</li>
+    </ul>
+    <div class="achieve">
+      <div class="achieve-label">Achievements</div>
+      <ul class="cert-list achieve">
+        <li>3rd prize — Institution-level Hackathon, Institution's Innovation Council</li>
+        <li>Participant — Tamil Nadu-wide Hackathon 2026 &amp; Smart India Hackathon 2025</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STRENGTHS + LANGUAGES -->
+  <section>
+    <div class="two-col">
+      <div>
+        <h2>Strengths</h2>
+        <ul class="strength-list">
+          <li>Quick learner</li>
+          <li>Teamwork and collaboration</li>
+          <li>Time management</li>
+          <li>Good communication</li>
+          <li>Adaptability</li>
+          <li>Positive attitude</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Languages</h2>
+        <ul class="lang-list">
+          <li>Tamil</li>
+          <li>English</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    N. Dharshini — dharshininarendrababu@gmail.com — 9361805646
+  </footer>
+
+</div>
+
+</body>
+</html>
